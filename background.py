@@ -64,7 +64,6 @@ def main(window):
                 run = False
 
         #draw
-        # window.fill((0,0,0))
         paddle_group.draw(window)
         pygame.display.update()
 
