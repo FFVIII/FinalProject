@@ -2,7 +2,7 @@ import pygame, random
 from os.path import isfile, join
 
 pygame.init()
-pygame.display.set_caption("Platformer")
+pygame.display.set_caption('Dodge the Blocks!')
 
 class Paddle(pygame.sprite.Sprite):
     def __init__(self, x):
@@ -14,6 +14,7 @@ class Paddle(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (100, 20))
         self.rect = self.image.get_rect(center=(x, 300))
 
+    #mouse control
     def update(self):
         x, _ = pygame.mouse.get_pos()
         self.x = x
@@ -23,7 +24,6 @@ class Paddle(pygame.sprite.Sprite):
 WIDTH, HEIGHT= 1000, 800
 FPS = 60
 window = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Dodge the Blocks!')
 clock = pygame.time.Clock()
 
 paddle_group = pygame.sprite.Group()
