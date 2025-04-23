@@ -4,3 +4,4 @@
   - Skills Covered: Game development, object-oriented programming, event handling, graphics
 
 ### 1. create a blank window
+### 1.1 create a blank window + clock
