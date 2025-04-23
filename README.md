@@ -3,4 +3,4 @@
   - Implement basic game mechanics (e.g., player movement, scoring, levels, AI opponents).
   - Skills Covered: Game development, object-oriented programming, event handling, graphics
 
-###1. create a lank window
+### 1. create a lank window
