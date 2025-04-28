@@ -5,4 +5,5 @@
 
 ### 1. create a blank window
 ### 1.1 create a blank window + clock
-### 2 add background
+### 2. add background
+### 3. add player and opponent
