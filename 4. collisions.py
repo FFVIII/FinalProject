@@ -21,7 +21,7 @@ snail_rect = snail_surface.get_rect(topright = (600,305))
 
 #Add player
 player_surface = pygame.image.load("assets/Background/mario1.png").convert_alpha()
-player_rect = player_surface.get_rect(midbottom = (80,301))
+player_rect = player_surface.get_rect(topright = (80,327))
 
 #Player Scale
 x = 60
@@ -31,15 +31,23 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            exit() 
-    
+            exit()
+
+        #Collisions use mouse  
+        if event.type == pygame.MOUSEBUTTONUP:
+            if player_rect.collidepoint(event.pos):
+                print('test')
+
     #Set background_surface
     screen.blit(background_surface, (0,0))
     
     #Set player_surface
     #Change player size
-    newImage = pygame.transform.scale(player_surface, (x,y))
-    screen.blit(newImage, player_rect)
+    # newImage = pygame.transform.scale(player_surface, (x,y))
+    original_midbottom = player_rect.midbottom 
+    player_surface_scaled = pygame.transform.scale(player_surface, (x, y))
+    player_rect = player_surface_scaled.get_rect(midbottom=original_midbottom)  # Update rect
+    screen.blit(player_surface_scaled, player_rect)
 
     #Set snail
     snail_rect.x -= 4

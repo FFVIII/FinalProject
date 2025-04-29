@@ -7,3 +7,6 @@
 ### 1.1 create a blank window + clock
 ### 2. add background
 ### 3. add player and opponent
+### 4. collisions
+### 5. add score
+### 6. add input
