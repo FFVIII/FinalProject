@@ -10,3 +10,5 @@
 ### 4. collisions
 ### 5. add score
 ### 6. add input
+### 7. game over
+### 8. calculate score
