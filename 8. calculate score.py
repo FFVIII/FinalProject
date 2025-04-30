@@ -30,7 +30,7 @@ snail_surface = pygame.image.load("assets/snail/snail1.png").convert_alpha()
 snail_rect = snail_surface.get_rect(topright = (600,305))
 
 #Add player
-player_surface = pygame.image.load("assets/Background/mario1.png").convert_alpha()
+player_surface = pygame.image.load("assets/mario/mario1.png").convert_alpha()
 player_rect = player_surface.get_rect(topright = (80,327))
 player_gravity = 0
 
@@ -53,8 +53,7 @@ while True:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE and player_rect.bottom >= 348:
                     game_active = True
-                    snail_rect.left = 800
-
+                    player_gravity = -20
     if game_active:
         #Set background_surface
         screen.blit(background_surface, (0,0))

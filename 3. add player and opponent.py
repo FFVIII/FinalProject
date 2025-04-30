@@ -20,7 +20,7 @@ snail_surface = pygame.image.load("assets/snail/snail1.png").convert_alpha()
 snail_rect = snail_surface.get_rect(topright = (600,305))
 
 #Add player
-player_surface = pygame.image.load("assets/Background/mario1.png").convert_alpha()
+player_surface = pygame.image.load("assets/mario/mario1.png").convert_alpha()
 player_rect = player_surface.get_rect(midbottom = (80,301))
 
 #Player Scale
