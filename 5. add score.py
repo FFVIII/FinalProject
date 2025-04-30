@@ -17,7 +17,7 @@ test_font = pygame.font.Font(None, 50)  # None uses default font
 clock = pygame.time.Clock()
 
 #Add background
-background_surface = pygame.image.load("assets/Background/mountains-background-game-vector.jpg")
+background_surface = pygame.image.load("assets/Background/bg.jpg")
 
 #Add Score
 score_surface = test_font.render('Score: ',True,'white')  

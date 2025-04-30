@@ -13,7 +13,7 @@ pygame.display.set_caption('Group D: Final Project')
 clock = pygame.time.Clock()
 
 #Add background
-background_surface = pygame.image.load("assets/Background/mountains-background-game-vector.jpg")
+background_surface = pygame.image.load("assets/Background/bg.jpg")
 
 while True:
     for event in pygame.event.get():
