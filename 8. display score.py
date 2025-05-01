@@ -1,6 +1,13 @@
 import pygame
 from sys import exit
 
+#Add Score
+def display_score():
+    current_time = int(pygame.time.get_ticks() / 1000) - start_time
+    score_surface = test_font.render(f'Score: {current_time}',False,(64,64,64))
+    score_rect = score_surface.get_rect(center = (400,50))
+    screen.blit(score_surface, score_rect)
+
 pygame.init()
 
 #display surface - window the player is going to see in the end						
@@ -17,13 +24,11 @@ clock = pygame.time.Clock()
 
 #game active
 game_active = True
+start_time = 0
 
 #Add background
 background_surface = pygame.image.load("assets/Background/bg.jpg")
 
-#Add Score
-score_surface = test_font.render('Score: ',True,'white')  
-score_rect = score_surface.get_rect(center=(400, 50))
 
 #Add snail
 snail_surface = pygame.image.load("assets/snail/snail1.png").convert_alpha()
@@ -35,8 +40,8 @@ player_rect = player_surface.get_rect(topright = (80,327))
 player_gravity = 0
 
 #Player Scale
-x = 60
-y = 60
+x = 55
+y = 55
 
 while True:
     for event in pygame.event.get():
@@ -54,6 +59,12 @@ while True:
                 if event.key == pygame.K_SPACE and player_rect.bottom >= 348:
                     game_active = True
                     player_gravity = -20
+        else:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                game_active = True
+                snail_rect.left = 800
+                start_time = int(pygame.time.get_ticks() / 1000)
+
     if game_active:
         #Set background_surface
         screen.blit(background_surface, (0,0))
@@ -61,7 +72,7 @@ while True:
         #Score
         #set text
         # pygame.draw.rect(screen, 'Pink', score_rect)
-        screen.blit(score_surface, score_rect)
+        display_score()
 
         #Set player_surface
         #Change player size
@@ -79,7 +90,7 @@ while True:
         screen.blit(player_surface_scaled, player_rect)
 
         #Set snail
-        snail_rect.x -= 4
+        snail_rect.x -= 5
         if snail_rect.right <= 0:
             snail_rect.left = 800
         screen.blit(snail_surface, snail_rect)
