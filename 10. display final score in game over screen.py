@@ -7,6 +7,7 @@ def display_score():
     score_surface = test_font.render(f'Score: {current_time}',False,'white')
     score_rect = score_surface.get_rect(center = (400,50))
     screen.blit(score_surface, score_rect)
+    return current_time
 
 pygame.init()
 
@@ -25,6 +26,7 @@ clock = pygame.time.Clock()
 #game active
 game_active = False
 start_time = 0
+score = 0
 
 #Add background
 background_surface = pygame.image.load("assets/Background/bg.jpg")
@@ -44,10 +46,10 @@ y = 55
 #Game over logo
 logo = pygame.image.load('assets/Background/logo.png').convert_alpha()
 logo_rect = logo.get_rect(center = (590,250))
-game_name = test_font.render('Thank you play with Group D', False, 'white')
-game_name_rect = game_name.get_rect(center = (400,300))
+game_name = test_font.render('Thank you for playing with Group D', False, 'white')
+game_name_rect = game_name.get_rect(center = (400,30))
 game_message = test_font.render("Press space to play", False, 'white')
-game_message_rect = game_message.get_rect(center = (400, 30))
+game_message_rect = game_message.get_rect(center = (400, 300))
 
 while True:
     for event in pygame.event.get():
@@ -78,7 +80,7 @@ while True:
         #Score
         #set text
         # pygame.draw.rect(screen, 'Pink', score_rect)
-        display_score()
+        score = display_score()
 
         #Set player_surface
         #Change player size
@@ -110,7 +112,15 @@ while True:
         logo_scaled = pygame.transform.scale(logo, (200, 100))
         screen.blit(logo_scaled, logo_rect)
         screen.blit(game_name, game_name_rect)
-        screen.blit(game_message, game_message_rect)
+
+        #Display score
+        score_message = test_font.render(f'Your Score: {score}', False, 'white')
+        score_message_rect = score_message.get_rect(center=(400, 300))
+       
+        if score == 0:
+            screen.blit(game_message, game_message_rect)
+        else:
+            screen.blit(score_message, score_message_rect)
 
     pygame.display.update()
     clock.tick(60)

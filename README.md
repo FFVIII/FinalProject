@@ -13,4 +13,4 @@
 ### 7. game over
 ### 8. calculate score
 ### 9. set game over screen
-### 10. show final score
+### 10. display final score in game over screen
