@@ -14,3 +14,5 @@
 ### 8. calculate score
 ### 9. set game over screen
 ### 10. display final score in game over screen
+### 11. Obstacle movemnent
+### 12. animation
