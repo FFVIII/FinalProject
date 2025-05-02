@@ -2,6 +2,7 @@ import pygame
 from random import randint
 from sys import exit
 
+
 #Add Score
 def display_score():
     current_time = int(pygame.time.get_ticks() / 1000) - start_time
@@ -27,13 +28,25 @@ def obstacle_movement(obstacle_list):
     else:
         return []
     
-
+# Collisions
 def collisions(player, obstacles):
     if obstacles:
         for obstacle_rect in obstacles:
             if player.colliderect(obstacle_rect):
                 return False
     return True
+
+# Player animation
+def player_animation():
+    global player_surface, player_index
+
+    if player_rect.bottom < 300:
+        player_surface = player_jump
+    else:
+        player_index += 0.1
+        if player_index >= len(player_walk):
+            player_index = 0
+        player_surface = player_walk[int(player_index)]
 
 pygame.init()
 
@@ -57,11 +70,11 @@ score = 0
 #Add background
 background_surface = pygame.image.load("assets/Background/bg.jpg")
 
-
 #Add snail
 snail_surface = pygame.image.load("assets/snail/snail1.png").convert_alpha()
+
 #Add fly
-fly_surface = pygame.image.load('assets/fly/a2.png').convert_alpha()
+fly_surface = pygame.image.load('assets/fly/a1.png').convert_alpha()
 
 #Obstacles
 obstacle_rect_list = []
@@ -69,8 +82,13 @@ obstacle_rect_list = []
 obstacle_timer = pygame.USEREVENT + 1
 pygame.time.set_timer(obstacle_timer,1500)
 
-#Add player + Player Scale
-player_surface = pygame.image.load("assets/mario/mario1.png").convert_alpha()
+#Add player + Player Scale + Player movement
+player_walk1 = pygame.image.load("assets/mario/mario1.png").convert_alpha()
+player_walk2 = pygame.image.load("assets/mario/mario2.png").convert_alpha()
+player_walk = [player_walk1, player_walk2]
+player_index = 0
+player_jump = pygame.image.load("assets/mario/mario3.png").convert_alpha()
+player_surface = player_walk[player_index]
 player_rect = player_surface.get_rect(topright = (80,328))
 player_gravity = 0
 x = 55
@@ -136,7 +154,7 @@ while True:
         player_rect.y += player_gravity
         if player_rect.bottom >= 349:
             player_rect.bottom = 349
-
+        player_animation()
         screen.blit(player_surface_scaled, player_rect)
         
         #Obstacle movement
