@@ -19,3 +19,5 @@
 ### 13. obstacle animations
 ### 14. sprite class
 ### 15. add music
+
+### Please use main.py file to run the game!
