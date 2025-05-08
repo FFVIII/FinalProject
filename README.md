@@ -21,4 +21,4 @@
 ### 15. add music
 
 ### Please use main.py file to run the game!
-### Space key for juumping! 
+### "Space key" for jumping! 
